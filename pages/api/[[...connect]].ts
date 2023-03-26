@@ -3,10 +3,18 @@ import routes from "./connect";
 
 // TODO check out cors middle ware https://github.com/vercel/next.js/blob/canary/examples/api-routes-cors/pages/api/cors.ts
 
-const { handler, config } = nextJsApiRouter({
+// export const config = {
+//   runtime: "edge",
+// };
+
+const { handler, config: routerConfig } = nextJsApiRouter({
   routes,
 });
 
-config.runtime = "edge";
+// config.runtime = "edge";
+export const config = {
+  ...routerConfig,
+  runtime: 'edge',
+}
 
-export { handler as default, config };
+export { handler as default };
