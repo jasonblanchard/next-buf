@@ -15,7 +15,7 @@ import { IntroduceRequest } from "@/gen/proto/eliza/v1/eliza_pb";
 
 const queryClient = new QueryClient();
 
-export default function VentView() {
+export default function ElizaView() {
   const transport = createConnectTransport({
     baseUrl: "/api",
   });
