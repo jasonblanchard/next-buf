@@ -7,4 +7,6 @@ const { handler, config } = nextJsApiRouter({
   routes,
 });
 
+config.runtime = "edge";
+
 export { handler as default, config };
