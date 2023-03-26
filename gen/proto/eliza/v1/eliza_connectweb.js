@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { SayRequest, SayResponse } from "./eliza_pb.js";
+import { IntroduceRequest, IntroduceResponse, SayRequest, SayResponse } from "./eliza_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -20,6 +20,15 @@ export const ElizaService = {
       I: SayRequest,
       O: SayResponse,
       kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc proto.eliza.v1.ElizaService.Introduce
+     */
+    introduce: {
+      name: "Introduce",
+      I: IntroduceRequest,
+      O: IntroduceResponse,
+      kind: MethodKind.ServerStreaming,
     },
   }
 };

@@ -54,3 +54,51 @@ export declare class SayResponse extends Message<SayResponse> {
   static equals(a: SayResponse | PlainMessage<SayResponse> | undefined, b: SayResponse | PlainMessage<SayResponse> | undefined): boolean;
 }
 
+/**
+ * @generated from message proto.eliza.v1.IntroduceRequest
+ */
+export declare class IntroduceRequest extends Message<IntroduceRequest> {
+  /**
+   * @generated from field: string greeting = 1;
+   */
+  greeting: string;
+
+  constructor(data?: PartialMessage<IntroduceRequest>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "proto.eliza.v1.IntroduceRequest";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IntroduceRequest;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IntroduceRequest;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IntroduceRequest;
+
+  static equals(a: IntroduceRequest | PlainMessage<IntroduceRequest> | undefined, b: IntroduceRequest | PlainMessage<IntroduceRequest> | undefined): boolean;
+}
+
+/**
+ * @generated from message proto.eliza.v1.IntroduceResponse
+ */
+export declare class IntroduceResponse extends Message<IntroduceResponse> {
+  /**
+   * @generated from field: string sentence = 1;
+   */
+  sentence: string;
+
+  constructor(data?: PartialMessage<IntroduceResponse>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "proto.eliza.v1.IntroduceResponse";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IntroduceResponse;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IntroduceResponse;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IntroduceResponse;
+
+  static equals(a: IntroduceResponse | PlainMessage<IntroduceResponse> | undefined, b: IntroduceResponse | PlainMessage<IntroduceResponse> | undefined): boolean;
+}
+

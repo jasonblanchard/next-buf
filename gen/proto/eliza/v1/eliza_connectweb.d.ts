@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { SayRequest, SayResponse } from "./eliza_pb.js";
+import { IntroduceRequest, IntroduceResponse, SayRequest, SayResponse } from "./eliza_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -20,6 +20,15 @@ export declare const ElizaService: {
       readonly I: typeof SayRequest,
       readonly O: typeof SayResponse,
       readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc proto.eliza.v1.ElizaService.Introduce
+     */
+    readonly introduce: {
+      readonly name: "Introduce",
+      readonly I: typeof IntroduceRequest,
+      readonly O: typeof IntroduceResponse,
+      readonly kind: MethodKind.ServerStreaming,
     },
   }
 };

@@ -10,6 +10,15 @@ message SayResponse {
     string sentence = 1;
 }
 
+message IntroduceRequest {
+    string greeting = 1;
+}
+
+message IntroduceResponse {
+    string sentence = 1;
+}
+
 service ElizaService {
     rpc Say(SayRequest) returns (SayResponse) {}
+    rpc Introduce(IntroduceRequest) returns (stream IntroduceResponse) {}
 }

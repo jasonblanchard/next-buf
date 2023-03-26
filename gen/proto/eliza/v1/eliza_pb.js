@@ -25,3 +25,23 @@ export const SayResponse = proto3.makeMessageType(
   ],
 );
 
+/**
+ * @generated from message proto.eliza.v1.IntroduceRequest
+ */
+export const IntroduceRequest = proto3.makeMessageType(
+  "proto.eliza.v1.IntroduceRequest",
+  () => [
+    { no: 1, name: "greeting", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ],
+);
+
+/**
+ * @generated from message proto.eliza.v1.IntroduceResponse
+ */
+export const IntroduceResponse = proto3.makeMessageType(
+  "proto.eliza.v1.IntroduceResponse",
+  () => [
+    { no: 1, name: "sentence", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ],
+);
+
