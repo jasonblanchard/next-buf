@@ -11,15 +11,13 @@ import { say } from "@/gen/proto/eliza/v1/eliza-ElizaService_connectquery";
 import { createPromiseClient } from "@bufbuild/connect";
 import { ElizaService } from "@/gen/proto/eliza/v1/eliza_connectweb";
 import { useEffect, useState } from "react";
-import { IntroduceRequest } from "@/gen/proto/eliza/v1/eliza_pb";
 
 const queryClient = new QueryClient();
+const transport = createConnectTransport({
+  baseUrl: "/api/middleware",
+});
 
 export default function ElizaView() {
-  const transport = createConnectTransport({
-    baseUrl: "/api",
-  });
-
   return (
     <TransportProvider transport={transport}>
       <QueryClientProvider client={queryClient}>
@@ -51,15 +49,13 @@ function Content() {
 }
 
 function Introduce() {
-  const transport = createConnectTransport({
-    baseUrl: "/api",
-  });
   const bufClient = createPromiseClient(ElizaService, transport);
   const [messages, setMessages] = useState<{ sentence: string }[]>([]);
 
   useEffect(() => {
     async function dorun() {
-      for await (const res of bufClient.introduce({ greeting: "Why, hello" })) {
+      const stream = bufClient.introduce({ greeting: "Why, hello" });
+      for await (const res of stream) {
         setMessages((messages) => [...messages, res]);
       }
     }
