@@ -49,7 +49,7 @@ export function next13JsApiRouter(options: NextJs13ApiRouterOptions): ApiRoute {
     const requestPath =
       req.url
         .replace("http://localhost:3000", "")
-        .replace("https://next-buf.vercel.app/", "") ?? ""; // TODO: Fix this
+        .replace("https://next-buf.vercel.app", "") ?? ""; // TODO: Fix this
     const uHandler = paths.get(requestPath);
     if (!uHandler) {
       return new Response(null, { status: 404 });
