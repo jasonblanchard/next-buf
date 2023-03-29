@@ -9,7 +9,7 @@ import routes from "@/connect";
 
 const { handler, config: routerConfig } = nextJsApiRouter({
   routes,
-  prefix: "/api/pages",
+  prefix: "/api/pageservice",
 });
 
 // config.runtime = "edge";

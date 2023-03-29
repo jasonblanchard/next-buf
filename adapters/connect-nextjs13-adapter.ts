@@ -3,11 +3,7 @@ import {
   ConnectRouterOptions,
   createConnectRouter,
 } from "@bufbuild/connect";
-import type {
-  UniversalHandler,
-  UniversalServerRequest,
-  UniversalServerResponse,
-} from "@bufbuild/connect/protocol";
+import type { UniversalHandler } from "@bufbuild/connect/protocol";
 import { createFetchHandler, FetchHandler } from "./fetch-universal-handler";
 
 interface NextJs13ApiRouterOptions extends ConnectRouterOptions {
@@ -30,7 +26,7 @@ interface NextJs13ApiRouterOptions extends ConnectRouterOptions {
   prefix?: string;
 }
 
-type NextApiRouteHandler<T = any> = (req: Request) => Promise<Response>;
+type NextApiRouteHandler = (req: Request) => Promise<Response>;
 
 interface ApiRoute {
   POST: FetchHandler | NextApiRouteHandler;
@@ -46,19 +42,14 @@ export function next13JsApiRouter(options: NextJs13ApiRouterOptions): ApiRoute {
   }
 
   async function POST(req: Request) {
-    const requestPath =
-      req.url
-        .replace("http://localhost:3000", "")
-        .replace("https://next-buf.vercel.app", "")
-        .replace("http://next-buf.vercel.app", "")
-        .replace(/\?.+/, "") ?? ""; // TODO: Fix this
+    const requestPath = new URL(req.url).pathname;
     const uHandler = paths.get(requestPath);
-    console.log({ requestPath, uHandler });
     if (!uHandler) {
       return new Response(null, { status: 404 });
     }
+    const fetchHandler = createFetchHandler(uHandler);
 
-    return await createFetchHandler(uHandler)(req);
+    return await fetchHandler(req);
   }
 
   return {

@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 
 const queryClient = new QueryClient();
 const transport = createConnectTransport({
-  baseUrl: "/api/app",
+  baseUrl: "/api/appservice",
 });
 
 export default function ElizaView() {
